@@ -15,7 +15,7 @@ plugins:
   - serverless-iam-roles-per-function
 
 custom:
-  fileBucketName: s3-file-bucket-${selt:provider.stage}
+  fileBucketName: s3-file-bucket-${self:provider.stage}
 
 functions:
   s3FileUploader:
@@ -26,7 +26,7 @@ functions:
           path: file
           method: POST
     iamRoleStatements:
-      - Effect: 'Allow'
+      - Effect: Allow
         Action:
           - "s3:Put*"
         Resource: arn:aws:s3:::${self:custom.fileBucketName}/*
@@ -38,7 +38,7 @@ functions:
           path: file/{fileKey}
           method: GET
     iamRoleStatements:
-      - Effect: 'Allow'
+      - Effect: Allow
         Action:
           - "s3:Get*"
         Resource: arn:aws:s3:::${self:custom.fileBucketName}/*
@@ -50,7 +50,7 @@ functions:
           path: file/{fileKey}
           method: DELETE
     iamRoleStatements:
-      - Effect: 'Allow'
+      - Effect: Allow
         Action:
           - "s3:DeleteObject"
         Resource: arn:aws:s3:::${self:custom.fileBucketName}/*
