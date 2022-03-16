@@ -8,7 +8,7 @@ module.exports.handler = async event => {
 
     const response = {
         isBase64Encoded: false,
-        statusCode: 200
+        statusCode: 200,
     };
 
     try {
